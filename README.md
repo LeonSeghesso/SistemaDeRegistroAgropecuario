@@ -22,3 +22,10 @@ Si tu MySQL tiene otro usuario o contraseña, definí las variables de entorno
 - `js/`: llamadas AJAX
 - `php/`: endpoints que hablan con MySQL
 - `database/agro.sql`: tablas `animales` y `pesajes` (+ datos de ejemplo)
+
+
+## Créditos
+- `Desarrollador`: Emmanuel León Seghesso
+- `Asignatura`: Programacion III 
+- `Carrera`: Tecnicatura en Analisis y Desarrollo de Software
+- `Institucion`: Instituto Superior "Gapar L. Benavento"
