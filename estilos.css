@@ -1,14 +1,154 @@
- #div1{
-    
-    width: 49%;
-    float: left;
-    position: relative;     
-}
-#div2{
-    
-    width: 49%;
-    float: right;
-    position: relative;
-
+:root {
+    --pasto: #23412f;
+    --pasto-claro: #3d6b3f;
+    --caravana: #f2c230;
+    --caravana-borde: #d9a91c;
+    --tierra: #5b4636;
+    --fondo: #e9eee6;
+    --linea: #cdd6c8;
 }
 
+body {
+    background: var(--fondo);
+    color: #1f2a22;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: Bitter, Georgia, serif;
+}
+
+/* Barra superior */
+.navbar {
+    background: var(--pasto) !important;
+}
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: .01em;
+}
+.navbar-brand::before {
+    content: "";
+    display: inline-block;
+    width: .7rem;
+    height: 1.1rem;
+    background: var(--caravana);
+    border-radius: 3px 3px 6px 6px;
+    margin-right: .55rem;
+    vertical-align: -.15rem;
+}
+.btn-caravana {
+    background: var(--caravana);
+    border-color: var(--caravana);
+    color: #2c2205;
+    font-weight: 600;
+}
+.btn-caravana:hover, .btn-caravana:focus {
+    background: #f7d25c;
+    border-color: #f7d25c;
+    color: #2c2205;
+}
+
+/* Encabezado de la página */
+.encabezado h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--pasto);
+}
+.encabezado p {
+    color: var(--tierra);
+    max-width: 55ch;
+}
+
+/* Paneles de los formularios */
+.panel {
+    background: #fff;
+    border: 1px solid var(--linea);
+    border-top: 4px solid var(--pasto-claro);
+    border-radius: 6px;
+    padding: 1.5rem;
+    height: 100%;
+}
+.panel-pesaje {
+    border-top-color: var(--caravana-borde);
+}
+.panel h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--pasto);
+    margin-bottom: .25rem;
+}
+.panel .ayuda {
+    color: #5e6b61;
+    font-size: .925rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: .925rem;
+}
+.form-control:focus, .form-select:focus {
+    border-color: var(--pasto-claro);
+    box-shadow: 0 0 0 .2rem rgba(61, 107, 63, .25);
+}
+
+.btn-agro {
+    background: var(--pasto-claro);
+    border-color: var(--pasto-claro);
+    color: #fff;
+    font-weight: 600;
+}
+.btn-agro:hover, .btn-agro:focus {
+    background: var(--pasto);
+    border-color: var(--pasto);
+    color: #fff;
+}
+
+/* Listado de animales (la tabla la arma el JavaScript) */
+#listado {
+    overflow-x: auto;
+}
+#listado:not(:empty) {
+    background: #fff;
+    border: 1px solid var(--linea);
+    border-radius: 6px;
+    padding: .5rem 1rem;
+    margin-bottom: 1.75rem;
+}
+#listado .table {
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: #f4f7f1;
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+#listado thead th {
+    font-weight: 600;
+    color: var(--pasto);
+    border-bottom: 2px solid var(--pasto-claro);
+    white-space: nowrap;
+}
+/* Pesos alineados a la derecha, con cifras de ancho fijo */
+#listado th:nth-child(3), #listado th:nth-child(4),
+#listado td:nth-child(3), #listado td:nth-child(4) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+/* El ID se ve como la caravana del animal */
+#listado tbody tr td:first-child {
+    background: var(--caravana);
+    box-shadow: none;
+    border-right: 2px solid var(--caravana-borde);
+    color: #2c2205;
+    font-weight: 700;
+    text-align: center;
+    width: 4rem;
+}
+
+/* Ventana del historial */
+.modal-header {
+    background: var(--pasto);
+    color: #fff;
+}
+.modal-header .btn-close {
+    filter: invert(1);
+}

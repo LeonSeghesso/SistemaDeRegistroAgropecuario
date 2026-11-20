@@ -64,6 +64,9 @@ $(document).ready(function() {
                             <button class="btn btn-sm btn-outline-secondary btn-historial" data-id="${animal.id}" data-raza="${animal.raza}">
                                 Ver Historial
                             </button>
+                            <button class="btn btn-sm btn-outline-danger btn-eliminar" data-id="${animal.id}" data-raza="${animal.raza}">
+                                Eliminar
+                            </button>
                         </td>
                     </tr>`;
                 });
@@ -84,7 +87,7 @@ $(document).ready(function() {
         });
     }
 
-    // Al abrir la página, solo poblamos el select de animales (sin mostrar la tabla)
+    // Al abrir la página, solo poblamos el select de animales
     cargarListado(false);
 
     // Delegado porque las filas se generan dinámicamente
@@ -93,7 +96,7 @@ $(document).ready(function() {
         const raza = $(this).data('raza');
 
         $("#contenidoHistorial").html('Cargando...');
-        $('#modalHistorial').modal('show');
+        bootstrap.Modal.getOrCreateInstance(document.getElementById('modalHistorial')).show();
 
         $.ajax({
             url: 'php/obtener_pesajes.php',
@@ -122,6 +125,33 @@ $(document).ready(function() {
             },
             error: function(){
                 $("#contenidoHistorial").html('<p class="text-danger">Error al cargar el historial.</p>');
+            }
+        });
+    });
+
+    // Eliminar animal (borrado lógico: el registro queda en la base, solo deja de mostrarse)
+    $(document).on('click', '.btn-eliminar', function(){
+        const idAnimal = $(this).data('id');
+        const raza = $(this).data('raza');
+
+        if (!confirm('¿Eliminar el animal #' + idAnimal + ' (' + raza + ')?')) {
+            return;
+        }
+
+        $.ajax({
+            url: 'php/eliminar_animal.php',
+            type: 'POST',
+            data: { id: idAnimal },
+            dataType: 'json',
+            success: function(response){
+                if (response.exito) {
+                    window.cargarListado();
+                } else {
+                    alert('No se pudo eliminar: ' + response.mensaje);
+                }
+            },
+            error: function(){
+                alert('Error al eliminar el animal.');
             }
         });
     });

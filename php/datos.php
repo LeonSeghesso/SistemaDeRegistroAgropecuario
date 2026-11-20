@@ -20,6 +20,7 @@
                 GROUP BY id_animal
             ) p2 ON p1.id_animal = p2.id_animal AND p1.fecha_pesaje = p2.max_fecha
         ) up ON up.id_animal = a.id
+        WHERE a.deleted_at IS NULL
         ORDER BY a.id
     ";
 
