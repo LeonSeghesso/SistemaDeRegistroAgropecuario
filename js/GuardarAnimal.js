@@ -96,7 +96,7 @@ $(document).ready(function() {
         $('#modalHistorial').modal('show');
 
         $.ajax({
-            url: 'obtener_pesajes.php',
+            url: 'php/obtener_pesajes.php',
             data: { id_animal: idAnimal },
             dataType: 'json',
             success: function(response){
