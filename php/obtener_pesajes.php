@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-require_once __DIR__ . "/conexion.php";
+include("conexion.php");
 
 $id_animal = $_GET['id_animal'] ?? '';
 

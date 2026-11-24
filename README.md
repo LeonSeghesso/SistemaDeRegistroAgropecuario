@@ -27,5 +27,5 @@ Si tu MySQL tiene otro usuario o contraseña, definí las variables de entorno
 ## Créditos
 - `Desarrollador`: Emmanuel León Seghesso
 - `Asignatura`: Programacion III 
-- `Carrera`: Tecnicatura en Analisis y Desarrollo de Software
+- `Carrera`: Tecnicatura Superior en Analisis y Desarrollo de Software
 - `Institucion`: Instituto Superior "Gapar L. Benavento"
